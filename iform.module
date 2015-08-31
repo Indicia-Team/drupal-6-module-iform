@@ -704,7 +704,7 @@ $('.ui-state-default').live('mouseout', function() {
     }
     // Now retrieve the form content
     try {
-      $r .= call_user_func(array('iform_' . $node->iform, 'get_form'), $args, $node, $response);
+      $r .= call_user_func(array('iform_' . $node->iform, 'get_form'), $args, $node->nid, $response);
     } catch (Exception $e) {
       watchdog('debug', 'Error occurred loading form');
       watchdog('debug', $e->getMessage());
