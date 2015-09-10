@@ -1100,7 +1100,6 @@ function hostsite_get_user_field($field, $default=false, $array=false, $uid=fals
     return $default;
 }
 
-
 /**
  * Function that allows Indicia code to hook into the Drupal user profile to set a field value, without
  * introducing a Drupal code dependency.
@@ -1123,6 +1122,16 @@ function hostsite_set_user_field($field, $data) {
   else {
     return FALSE;
   }
+}
+
+/**
+ * Returns true if the current user is permitted to perform a named task.
+ * @param string $task
+ * @return boolean True if allowed
+ */
+function hostsite_user_has_permission($task, $uid = FALSE) {
+  $account = $uid ? user_load($uid) : NULL;
+  return user_access($task, $account);
 }
 
 /**
